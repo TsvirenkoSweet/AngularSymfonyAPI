@@ -1,15 +1,9 @@
+<input type="text" [(ngModel)]="carName">
 <button (click)="addProduct()">Add product</button>
-<p>{{ addProductStatus }}</p>
+<p *ngIf="addProductStatus; else successStatus">Added</p>
+<ng-template #successStatus>
+  <p>Not Added</p>
+</ng-template>
+
 <app-product></app-product>
 <app-product></app-product>
-
-
-<label>
-  <input  type="text" (keyup.enter)="onInput($event)">
-</label>
-
-<label>
-  <input  type="text" [(ngModel)]="inputText">
-</label>
-
-<p>{{ inputText }}</p>

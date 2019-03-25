@@ -7,17 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent {
 
-  addProductStatus = '';
-  inputText = 'Default text';
+  carName = '';
+
+  addProductStatus = false;
 
   constructor() {
   }
 
   addProduct() {
-    this.addProductStatus = 'Product added';
-  }
-
-  onInput(event) {
-      this.inputText = event.target.value;
+    this.addProductStatus = true;
   }
 }
