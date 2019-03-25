@@ -7,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent {
 
-  canAddProduct = false;
+  addProductStatus = '';
+  inputText = '';
 
   constructor() {
-    setTimeout( () => {
-      this.canAddProduct = true;
-    }, 4000);
+  }
+
+  addProduct() {
+    this.addProductStatus = 'Product added';
+  }
+
+  onInput(event) {
+      this.inputText = event.target.value;
   }
 }

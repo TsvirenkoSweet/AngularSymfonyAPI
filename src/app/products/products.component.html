@@ -1,3 +1,9 @@
-<button [disabled]="!canAddProduct" >Add product</button>
+<button (click)="addProduct()">Add product</button>
+<p>{{ addProductStatus }}</p>
 <app-product></app-product>
 <app-product></app-product>
+
+<label>
+  <input name="ololo" type="text" (keyup.enter)="onInput($event)">
+</label>
+<p>{{ inputText }}</p>
