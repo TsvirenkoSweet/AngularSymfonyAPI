@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
 
-  constructor() { }
+  canAddProduct = false;
 
-  ngOnInit() {
+  constructor() {
+    setTimeout( () => {
+      this.canAddProduct = true;
+    }, 4000);
   }
-
 }
