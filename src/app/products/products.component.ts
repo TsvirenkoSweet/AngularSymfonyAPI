@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent {
 
   addProductStatus = '';
-  inputText = '';
+  inputText = 'Default text';
 
   constructor() {
   }

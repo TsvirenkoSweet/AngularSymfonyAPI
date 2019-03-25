@@ -3,7 +3,13 @@
 <app-product></app-product>
 <app-product></app-product>
 
+
 <label>
-  <input name="ololo" type="text" (keyup.enter)="onInput($event)">
+  <input  type="text" (keyup.enter)="onInput($event)">
 </label>
+
+<label>
+  <input  type="text" [(ngModel)]="inputText">
+</label>
+
 <p>{{ inputText }}</p>
