@@ -5,10 +5,15 @@
   <p>Not Added</p>
 </ng-template>
 
-<app-product *ngFor="let product of products"></app-product>
+<!--<app-product *ngFor="let product of products"></app-product>-->
 
 <ul>
-  <li *ngFor="let item of items; let i = index">
-    <b>Index - {{ i+1 }}</b> :  <b> id -{{ item.id }}</b> : <b> name -  {{ item.name }}</b>
+  <li *ngFor="let product of products; let i = index">
+    <div
+      [ngStyle]="{backgroundColor: (i+1) % 2 === 0 ? 'red' : 'green', 'color': 'white'}"
+      [ngClass]="{'big-text': setBigProductText(product)}"
+    >
+      <b>Index - {{ i+1 }}</b> : <b> {{ product }}</b>
+    </div>
   </li>
 </ul>

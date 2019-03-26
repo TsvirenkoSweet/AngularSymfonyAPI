@@ -11,7 +11,7 @@ export class ProductsComponent {
 
   addProductStatus = false;
 
-  products = ['Apple', 'Samsung', 'Lenovo'];
+  products = ['Apple', 'Samsung', 'Lenovo', 'HTC', 'Sony', 'Prestigio'];
 
   items = [
     {
@@ -47,5 +47,8 @@ export class ProductsComponent {
     this.addProductStatus = true;
     this.products.push(this.productTitle);
     this.productTitle = '';
+  }
+  setBigProductText(product: string) {
+    return product.length > 5;
   }
 }
