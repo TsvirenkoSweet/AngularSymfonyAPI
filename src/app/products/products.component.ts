@@ -13,31 +13,11 @@ export class ProductsComponent {
 
   products = ['Apple', 'Samsung', 'Lenovo', 'HTC', 'Sony', 'Prestigio'];
 
-  items = [
-    {
-      id: 11,
-      name: 'item 1'
-    },
-    {
-      id: 233,
-      name: 'item 2'
-    },
-    {
-      id: 32,
-      name: 'item 3'
-    },
-    {
-      id: 441,
-      name: 'item 4'
-    },
-    {
-      id: 5,
-      name: 'item 5'
-    },
-    {
-      id: 622,
-      name: 'item 6'
-    }
+  dates = [
+    new Date(2019, 2, 20).toDateString(),
+    new Date(2019, 12, 21).toDateString(),
+    new Date(2019, 3, 1).toDateString(),
+    new Date(2019, 5, 5).toDateString(),
   ];
 
   constructor() {
@@ -47,8 +27,5 @@ export class ProductsComponent {
     this.addProductStatus = true;
     this.products.push(this.productTitle);
     this.productTitle = '';
-  }
-  setBigProductText(product: string) {
-    return product.length > 5;
   }
 }

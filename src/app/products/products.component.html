@@ -8,12 +8,9 @@
 <!--<app-product *ngFor="let product of products"></app-product>-->
 
 <ul>
-  <li *ngFor="let product of products; let i = index">
-    <div
-      [ngStyle]="{backgroundColor: (i+1) % 2 === 0 ? 'red' : 'green', 'color': 'white'}"
-      [ngClass]="{'big-text': setBigProductText(product)}"
-    >
-      <b>Index - {{ i+1 }}</b> : <b> {{ product }}</b>
+  <li *ngFor="let date of dates; let i = index">
+    <div>
+      <b>Index - {{ i+1 }}</b> : <b> {{ date | date | uppercase}}</b>
     </div>
   </li>
 </ul>
