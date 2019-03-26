@@ -1,9 +1,14 @@
-<input type="text" [(ngModel)]="carName">
+<input type="text" [(ngModel)]="productTitle">
 <button (click)="addProduct()">Add product</button>
 <p *ngIf="addProductStatus; else successStatus">Added</p>
 <ng-template #successStatus>
   <p>Not Added</p>
 </ng-template>
 
-<app-product></app-product>
-<app-product></app-product>
+<app-product *ngFor="let product of products"></app-product>
+
+<ul>
+  <li *ngFor="let item of items; let i = index">
+    <b>Index - {{ i+1 }}</b> :  <b> id -{{ item.id }}</b> : <b> name -  {{ item.name }}</b>
+  </li>
+</ul>
