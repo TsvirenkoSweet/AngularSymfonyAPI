@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-products',
@@ -6,9 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-
-  productTitle = '';
-  productYear = 2019;
 
   products: {name: string, year: number}[] = [
     {
@@ -28,12 +25,8 @@ export class ProductsComponent {
   constructor() {
   }
 
-  addProduct() {
-    this.products.push({
-      name: this.productTitle,
-      year: this.productYear
-    });
-    this.productTitle = '';
-    this.productYear = 2019;
+  updateProductList(product: {name: string, year: number}) {
+    this.products.push(product);
   }
+
 }
