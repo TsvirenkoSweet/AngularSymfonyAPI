@@ -1,15 +1,6 @@
 <input type="text" [(ngModel)]="productTitle">
+<input type="text" [(ngModel)]="productYear">
 <button (click)="addProduct()">Add product</button>
-<p *ngIf="addProductStatus; else successStatus">Added</p>
-<ng-template #successStatus>
-  <p>Not Added</p>
-</ng-template>
 
 
-<ul>
-  <li *ngFor="let date of dates; let i = index">
-    <div>
-      <b>Index - {{ i+1 }}</b> : <b> {{ date | date | uppercase}}</b>
-    </div>
-  </li>
-</ul>
+<app-product *ngFor="let product of products" [productItem]="product"></app-product>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input} from '@angular/core';
+// Todo what we need to do with duplicated decorator property when we publish private area
+const input = Input('productItem');
 
 @Component({
   selector: 'app-product',
@@ -6,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent {
-  productTitle = 'Apple';
-  productPublishedDate = '05.03.2019';
 
-  getProductTitle() {
-    return this.productTitle;
-  }
+  @input product: {name: string, year: number};
+
+  private productItem = false;
+
 }
