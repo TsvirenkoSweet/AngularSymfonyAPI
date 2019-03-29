@@ -1,3 +1,4 @@
-<input type="text" [(ngModel)]="productTitle">
+<!--<input type="text" [(ngModel)]="productTitle">-->
+<input type="text" #productTitleInput>
 <input type="text" [(ngModel)]="productYear">
-<button (click)="addProduct()">Add product</button>
+<button (click)="addProduct(productTitleInput)">Add product</button>

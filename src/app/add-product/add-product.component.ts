@@ -9,7 +9,6 @@ const output = Output('onAddProduct');
 })
 export class AddProductComponent implements OnInit {
 
-  productTitle = '';
   productYear = 2019;
   @output productEmmiter = new EventEmitter<{name: string, year: number}>();
 
@@ -18,9 +17,9 @@ export class AddProductComponent implements OnInit {
   ngOnInit() {
   }
 
-  addProduct() {
-    this.productEmmiter.emit({name: this.productTitle, year: this.productYear});
-    this.productTitle = '';
+  addProduct(productEl: HTMLInputElement) {
+    this.productEmmiter.emit({name: productEl.value, year: this.productYear});
+    productEl.value = '';
     this.productYear = 2019;
   }
 }
