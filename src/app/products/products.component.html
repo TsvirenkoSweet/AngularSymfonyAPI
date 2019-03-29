@@ -1,15 +1,18 @@
-<input type="text" [(ngModel)]="productTitle">
-<button (click)="addProduct()">Add product</button>
-<p *ngIf="addProductStatus; else successStatus">Added</p>
-<ng-template #successStatus>
-  <p>Not Added</p>
-</ng-template>
+<h1>Form to adding products</h1>
 
+<app-add-product (onAddProduct)="updateProductList($event)"></app-add-product>
 
-<ul>
-  <li *ngFor="let date of dates; let i = index">
-    <div>
-      <b>Index - {{ i+1 }}</b> : <b> {{ date | date | uppercase}}</b>
+<button (click)="changeProductTitle()">Change title product</button>
+
+<button (click)="deleteProduct()">Delete Product</button>
+
+<app-product *ngFor="let product of products" [productItem]="product" [nameProduct]="product.name">
+  <div class="product">
+    <h3 #productHeading>
+      Title: "{{ product.name }}"
+    </h3>
+    <div class="publish_date">
+      Published date: "{{ product.year }}"
     </div>
-  </li>
-</ul>
+  </div>
+</app-product>

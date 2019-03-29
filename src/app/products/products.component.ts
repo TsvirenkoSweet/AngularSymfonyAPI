@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-products',
@@ -7,25 +7,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent {
 
-  productTitle = '';
-
-  addProductStatus = false;
-
-  products = ['Apple', 'Samsung', 'Lenovo', 'HTC', 'Sony', 'Prestigio'];
-
-  dates = [
-    new Date(2019, 2, 20).toDateString(),
-    new Date(2019, 12, 21).toDateString(),
-    new Date(2019, 3, 1).toDateString(),
-    new Date(2019, 5, 5).toDateString(),
+  products: {name: string, year: number}[] = [
+    // {
+    //   name: 'Apple',
+    //   year: 2019
+    // },
+    // {
+    //   name: 'Samsung',
+    //   year: 2019
+    // },
+    {
+      name: 'Lenovo',
+      year: 2019
+    }
   ];
 
   constructor() {
   }
 
-  addProduct() {
-    this.addProductStatus = true;
-    this.products.push(this.productTitle);
-    this.productTitle = '';
+  updateProductList(product: {name: string, year: number}) {
+    this.products.push(product);
   }
+
+  changeProductTitle() {
+    this.products[0].name = 'New Title Name';
+  }
+
+  deleteProduct() {
+    this.products.splice(0, 1);
+  }
+
 }
