@@ -2,7 +2,11 @@
 
 <app-add-product (onAddProduct)="updateProductList($event)"></app-add-product>
 
-<app-product *ngFor="let product of products" [productItem]="product">
+<button (click)="changeProductTitle()">Change title product</button>
+
+<button (click)="deleteProduct()">Delete Product</button>
+
+<app-product *ngFor="let product of products" [productItem]="product" [nameProduct]="product.name">
   <div class="product">
     <h3 #productHeading>
       Title: "{{ product.name }}"

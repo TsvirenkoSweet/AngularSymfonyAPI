@@ -1,4 +1,16 @@
-import {AfterViewInit, Component, ContentChild, ElementRef, Input} from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit, AfterViewChecked,
+  AfterViewInit,
+  Component,
+  ContentChild,
+  DoCheck,
+  ElementRef,
+  Input,
+  OnChanges, OnDestroy,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
 
 const input = Input('productItem');
 
@@ -7,13 +19,52 @@ const input = Input('productItem');
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements AfterViewInit {
+export class ProductComponent implements OnInit,
+  OnChanges,
+  DoCheck,
+  AfterContentInit,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
+  OnDestroy {
 
   @input product: {name: string, year: number};
+  @Input() nameProduct: string;
   @ContentChild('productHeading') productHeading: ElementRef;
 
-  ngAfterViewInit() {
-    console.log(this.productHeading);
+  constructor() {
+    console.log('constructor');
   }
 
+  ngOnInit() {
+    console.log('ngOnInit');
+  }
+
+  ngDoCheck() {
+    console.log('ngDoCheck');
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('ngOnChanges', changes);
+  }
+
+  ngAfterContentChecked() {
+    console.log('ngAfterContentChecked');
+  }
+
+  ngAfterContentInit() {
+    console.log('ngAfterContentInit');
+  }
+
+  ngAfterViewInit() {
+    console.log('ngAfterViewInit');
+  }
+
+  ngAfterViewChecked() {
+    console.log('ngAfterViewChecked');
+  }
+
+  ngOnDestroy() {
+    console.log('ngOnDestroy');
+  }
 }
