@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 
 const output = Output('onAddProduct');
 
@@ -9,17 +9,16 @@ const output = Output('onAddProduct');
 })
 export class AddProductComponent implements OnInit {
 
-  productYear = 2019;
   @output productEmmiter = new EventEmitter<{name: string, year: number}>();
-
+  @ViewChild('productYearInput') productYearInput: ElementRef;
   constructor() { }
 
   ngOnInit() {
   }
 
   addProduct(productEl: HTMLInputElement) {
-    this.productEmmiter.emit({name: productEl.value, year: this.productYear});
+    this.productEmmiter.emit({name: productEl.value, year: +this.productYearInput.nativeElement.value});
     productEl.value = '';
-    this.productYear = 2019;
+    this.productYearInput.nativeElement.value = '';
   }
 }
