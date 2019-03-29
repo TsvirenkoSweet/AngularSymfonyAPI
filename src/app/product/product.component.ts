@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-// Todo what we need to do with duplicated decorator property when we publish private area
+import {AfterViewInit, Component, ContentChild, ElementRef, Input} from '@angular/core';
+
 const input = Input('productItem');
 
 @Component({
@@ -7,10 +7,13 @@ const input = Input('productItem');
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent {
+export class ProductComponent implements AfterViewInit {
 
   @input product: {name: string, year: number};
+  @ContentChild('productHeading') productHeading: ElementRef;
 
-  private productItem = false;
+  ngAfterViewInit() {
+    console.log(this.productHeading);
+  }
 
 }
