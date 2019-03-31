@@ -1,4 +1,4 @@
-import {Directive, ElementRef, OnInit} from '@angular/core';
+import {Directive, ElementRef, OnInit, Renderer2} from '@angular/core';
 
 
 @Directive({
@@ -7,10 +7,12 @@ import {Directive, ElementRef, OnInit} from '@angular/core';
 
 export class BgDirective implements OnInit {
 
-  constructor(private element: ElementRef) {}
+  constructor(private element: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
-    this.element.nativeElement.style.backgroundColor = 'red';
+    this.renderer.setStyle(this.element.nativeElement, 'backgroundColor', 'grey');
+    this.renderer.addClass(this.element.nativeElement, 'green-text');
+    // this.element.nativeElement.style.backgroundColor = 'red';
   }
 
 }
