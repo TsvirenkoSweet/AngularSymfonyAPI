@@ -1,1 +1,15 @@
 <h3 [appBg]="'greenYellow'" [defaultColor]="'transparent'">{{ title }}</h3>
+
+
+<ul>
+  <li *ngFor="let item of items" (click)="onClick(item)">
+    {{ item }}
+  </li>
+</ul>
+
+<div [ngSwitch]="curent">
+  <p *ngSwitchCase="1">1</p>
+  <p *ngSwitchCase="2">2</p>
+  <p *ngSwitchCase="3">3</p>
+  <p *ngSwitchDefault>default</p>
+</div>

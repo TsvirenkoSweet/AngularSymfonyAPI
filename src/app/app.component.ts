@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular Symfony API';
+  items = [
+    1,
+    2,
+    3,
+    4,
+    5
+  ];
+
+  curent = 1;
+
+  onClick(numbers: number) {
+      this.curent = numbers;
+  }
 }
