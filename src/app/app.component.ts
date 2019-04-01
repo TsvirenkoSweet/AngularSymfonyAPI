@@ -2,22 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <div class="col-xs-8 col-xs-offset-2">
+      <h2>{{ num }}</h2>
+      <h2>{{ num | appPow:3:'=' }}</h2>
+    </div>
+  `
 })
 export class AppComponent {
-  title = 'Angular Symfony API';
-  items = [
-    1,
-    2,
-    3,
-    4,
-    5
-  ];
-
-  curent = 1;
-
-  onClick(numbers: number) {
-      this.curent = numbers;
-  }
+  num = 2;
 }
