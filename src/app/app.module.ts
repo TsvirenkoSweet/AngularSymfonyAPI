@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import {BgDirective} from './directives/bg.directive';
 import {PowPipe} from './pow.pipe';
+import {CarFilterPipe} from './car-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BgDirective,
-    PowPipe
+    PowPipe,
+    CarFilterPipe
   ],
   imports: [
     BrowserModule,
