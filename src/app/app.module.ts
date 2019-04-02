@@ -4,23 +4,22 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import {BgDirective} from './directives/bg.directive';
-import {PowPipe} from './pow.pipe';
-import {CarFilterPipe} from './car-filter.pipe';
+import {CarAddComponent} from './car-add/car-add.component';
+import {CarComponent} from './car/car.component';
+import {ConsoleService} from './console.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BgDirective,
-    PowPipe,
-    CarFilterPipe
+    CarAddComponent,
+    CarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ConsoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
