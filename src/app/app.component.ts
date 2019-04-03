@@ -1,22 +1,11 @@
-import {Component, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styles: [`
-    input.ng-touched{
-      border: 2px solid red;
-    }
-    input.ng-valid{
-      border: 2px solid green;
-    }
-  `]
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
-
-  @ViewChild('form') form: NgForm;
-
+export class AppComponent implements OnInit {
   answers = [{
     type: 'yes',
     text: 'Да'
@@ -25,35 +14,45 @@ export class AppComponent {
     text: 'Нет'
   }];
 
-  defaultAnswer = 'no';
-  defaultCountry = 'ua';
+  charsCount = 5;
 
-  formDataa = {};
-  isSumbmited = false;
+  form: FormGroup;
 
-  clickRandEmail() {
-    const randMail = 'dsffdfs@mail.ru';
-    // this.form.setValue({
-    //   user: {
-    //     pass: '',
-    //     email: randMail
-    //   },
-    //   country: '',
-    //   answer: ''
-    // });
-    this.form.form.patchValue({
-      user: {
-          pass: '',
-          email: randMail
-        }
+  ngOnInit() {
+    this.form = new FormGroup({
+      user: new FormGroup({
+        email: new FormControl('', [Validators.required, Validators.email], this.checkForEmail),
+        pass: new FormControl('', [Validators.required, this.checkForLength.bind(this)]),
+      }),
+      country: new FormControl('ru'),
+      answer: new FormControl('no')
     });
   }
 
-  submitForm() {
-    this.isSumbmited = true;
-    this.formDataa = this.form.value;
-    this.form.reset();
-    console.log(this.form);
+  onSubmit() {
+    console.log('Submited!', this.form);
+  }
+
+  checkForLength(control: FormControl) {
+    if (control.value.length <= this.charsCount) {
+      return {
+        lengthError: true
+      };
+    }
+    return null;
+  }
+
+  checkForEmail(control: FormControl): Promise<any> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'test@mail.ru') {
+          resolve({
+            emailIsUsed: true
+          });
+        } else {
+          resolve(null);
+        }
+      }, 3000);
+    });
   }
 }
-
