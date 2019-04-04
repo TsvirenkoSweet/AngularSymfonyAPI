@@ -1,0 +1,14 @@
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" },
+    { "id": 2, "title": "json-dasd", "author": "tyqweqwfsdpicode2" },
+    { "id": 3, "title": "json-sdfdsfd", "author": "qweqwe" },
+    { "id": 4, "title": "json-qewewqe", "author": "eqwefdssdf" },
+    { "id": 5, "title": "json-tertert", "author": "eqwedsfxcx" },
+    { "id": 6, "title": "json-qweqweqwe", "author": "gdfgwed" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}
