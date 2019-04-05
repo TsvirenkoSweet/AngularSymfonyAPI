@@ -15,12 +15,9 @@ export class AppComponent implements Cars {
 
   constructor(private carsService: CarsService) {  }
 
-
+  name: string;
   color: string;
   id: number;
-  name: string;
-
-
 
   loadCars() {
     this.carsService
