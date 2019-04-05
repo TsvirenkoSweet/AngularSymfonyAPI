@@ -1,15 +1,30 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {CarsService} from './cars.service';
+
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent {
-  cars = [
-    {
-      name: 'Ford',
-      color: 'white',
-      id: 1
-    }
-  ];
+
+
+export class AppComponent implements Cars {
+
+  cars: Cars[] = [];
+
+  constructor(private carsService: CarsService) {  }
+
+
+  color: string;
+  id: number;
+  name: string;
+
+
+
+  loadCars() {
+    this.carsService
+      .getCars()
+      .subscribe((data: Cars[]) => this.cars = data);
+  }
 }
