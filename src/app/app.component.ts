@@ -12,6 +12,7 @@ import {CarsService} from './cars.service';
 export class AppComponent implements Cars {
 
   cars: Cars[] = [];
+  carName = '';
 
   constructor(private carsService: CarsService) {  }
 
@@ -24,4 +25,14 @@ export class AppComponent implements Cars {
       .getCars()
       .subscribe((data: Cars[]) => this.cars = data);
   }
+
+  addCars() {
+    this.carsService.
+    addCar(this.carName)
+      .subscribe((car: Cars) => {
+        this.cars.push(car);
+      });
+    this.carName = '';
+  }
+
 }
