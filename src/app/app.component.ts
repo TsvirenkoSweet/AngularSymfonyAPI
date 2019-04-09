@@ -12,6 +12,10 @@ import {CarsService} from './cars.service';
 
 export class AppComponent implements Cars {
 
+  name: string;
+  color: string;
+  id: number;
+
   colors = [
     'red',
     'blue',
@@ -24,10 +28,6 @@ export class AppComponent implements Cars {
   carName = '';
 
   constructor(private carsService: CarsService) {  }
-
-  name: string;
-  color: string;
-  id: number;
 
   loadCars() {
     this.carsService
@@ -54,6 +54,14 @@ export class AppComponent implements Cars {
       .changeColor(car, this.getRandomColor())
       .subscribe((data) => {
         console.log(data);
+      });
+  }
+
+  deleteCar(car: Cars) {
+    this.carsService
+      .deleteCar(car)
+      .subscribe((data) => {
+        this.cars = this.cars.filter(c => c.id !== car.id);
       });
   }
 
