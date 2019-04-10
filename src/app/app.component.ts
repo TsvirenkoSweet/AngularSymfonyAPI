@@ -32,7 +32,7 @@ export class AppComponent implements Cars {
   loadCars() {
     this.carsService
       .getCars()
-      .subscribe((data: Cars[]) => this.cars = data);
+      .subscribe((data: Cars[]) => this.cars = data, (error => alert(error)));
   }
 
   addCars() {
