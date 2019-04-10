@@ -1,3 +1,17 @@
 .green-text{
   color: green;
 }
+.list-group{
+  background: azure;
+}
+.list-group-item{
+  list-style: none;
+  padding: 5px 0;
+}
+.badge{
+  margin-right: 5px;
+  color: #ffffff;
+  min-width: 30px;
+  text-align: center;
+  display: inline-block;
+}

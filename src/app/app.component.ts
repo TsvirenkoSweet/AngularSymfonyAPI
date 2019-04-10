@@ -1,58 +1,68 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component} from '@angular/core';
+import {CarsService} from './cars.service';
+
+
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  answers = [{
-    type: 'yes',
-    text: 'Да'
-  }, {
-    type: 'no',
-    text: 'Нет'
-  }];
 
-  charsCount = 5;
 
-  form: FormGroup;
+export class AppComponent implements Cars {
 
-  ngOnInit() {
-    this.form = new FormGroup({
-      user: new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email], this.checkForEmail),
-        pass: new FormControl('', [Validators.required, this.checkForLength.bind(this)]),
-      }),
-      country: new FormControl('ru'),
-      answer: new FormControl('no')
-    });
+  name: string;
+  color: string;
+  id: number;
+
+  colors = [
+    'red',
+    'blue',
+    'green',
+    'pink',
+    'yellow',
+    'grey'
+  ];
+  cars: Cars[] = [];
+  carName = '';
+
+  constructor(private carsService: CarsService) {  }
+
+  loadCars() {
+    this.carsService
+      .getCars()
+      .subscribe((data: Cars[]) => this.cars = data, (error => alert(error)));
   }
 
-  onSubmit() {
-    console.log('Submited!', this.form);
+  addCars() {
+    this.carsService
+      .addCar(this.carName)
+      .subscribe((car: Cars) => {
+        this.cars.push(car);
+      });
+    this.carName = '';
   }
 
-  checkForLength(control: FormControl) {
-    if (control.value.length <= this.charsCount) {
-      return {
-        lengthError: true
-      };
-    }
-    return null;
+  getRandomColor() {
+    const num = Math.round(Math.random() * (this.colors.length - 1));
+    return this.colors[num];
   }
 
-  checkForEmail(control: FormControl): Promise<any> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (control.value === 'test@mail.ru') {
-          resolve({
-            emailIsUsed: true
-          });
-        } else {
-          resolve(null);
-        }
-      }, 3000);
-    });
+  setNewColor(car: Cars) {
+    this.carsService
+      .changeColor(car, this.getRandomColor())
+      .subscribe((data) => {
+        console.log(data);
+      });
   }
+
+  deleteCar(car: Cars) {
+    this.carsService
+      .deleteCar(car)
+      .subscribe((data) => {
+        this.cars = this.cars.filter(c => c.id !== car.id);
+      });
+  }
+
 }
